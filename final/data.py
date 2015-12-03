@@ -29,7 +29,7 @@ train_raw_attr = load_attribute_texts(train_feat_attr)
 
 test_feat_alexnet = np.load('./data/alexnet_feat_test.npy')
 test_feat_sift = np.load('./data/SIFTBoW_test.npy')
-test_feat_attr = load_attributes('../data/attributes_test.txt')
+test_feat_attr = load_attributes('./data/attributes_test.txt')
 test_raw_attr = load_attribute_texts(test_feat_attr)
 
 
