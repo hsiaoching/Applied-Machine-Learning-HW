@@ -7,7 +7,7 @@ def output_submission(prediction):
     for f in os.listdir('submission'):
         n, ext = os.path.splitext(f)
         if ext == '.csv':
-            latest = max(int(n.replace('0', '')), latest)
+            latest = max(int(n), latest)
 
     new_file_path = os.path.join('submission', '%03d.csv' % (latest + 1))
     print("Generating new file for submision: %s..." % (new_file_path))
