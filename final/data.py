@@ -1,10 +1,13 @@
 import numpy as np
 from nltk.stem.porter import PorterStemmer
+from nltk.stem import WordNetLemmatizer
+wordnet_lemmatizer = WordNetLemmatizer()
 
 stemmer = PorterStemmer()
-
 with open('./data/attributes_list.txt') as f:
     attr_texts = [attr_text[1:-2].replace('/', ' ').split() for attr_text in f]
+    for i in range(len(attr_texts)):
+        attr_texts[i] = [wordnet_lemmatizer.lemmatize(w, 'v') for w in attr_texts[i]]
 
 def load_attributes(file_name):
     with open(file_name) as f:
@@ -18,7 +21,8 @@ def load_attribute_texts(attrs):
         for i in range(len(attr)):
             if attr[i] == 1:
                 text.extend(attr_texts[i])
-        texts.append(set(map(stemmer.stem, text)))
+        
+        texts.append(set(text))
     return texts
 
 
