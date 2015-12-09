@@ -25,7 +25,6 @@ def load_attribute_texts(attrs):
         texts.append(set(text))
     return texts
 
-
 train_feat_alexnet = np.load('./data/alexnet_feat_train.npy')
 train_feat_sift = np.load('./data/SIFTBoW_train.npy')
 train_feat_attr = load_attributes('./data/attributes_train.txt')
@@ -47,6 +46,10 @@ with open('./data/train.txt') as data:
 
 ten_k_feat_alexnet = np.load('./data/alexnet_feat_10k.npy')
 ten_k_feat_sift = np.load('./data/SIFTBoW_10k.npy')
+
+from json import load
+with open('./data/captions.json', 'rb') as caption_file:
+    ten_k_captions = load(caption_file)
 
 with open('./data/attributes_list.txt') as data:
     attributes = [row for row in data]
